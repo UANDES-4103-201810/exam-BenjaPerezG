@@ -21,7 +21,7 @@
           <% @ingredients = @ingredients + Ingredient.find(recipe.ingredient_id).name + " " %>
         <% end %>
         <%= @ingredients %>
-        <%= link_to("Add to cart", cart_new_item_path, pizza: pizza.id) %></td>
+        <%= link_to("Add to cart") %></td>
       <% if i == 2  %>
         </tr>
       <% end %>

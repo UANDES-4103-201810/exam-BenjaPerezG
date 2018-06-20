@@ -1,0 +1,7 @@
+<table class="table">
+  <tbody>
+  <% while @cart_item_count > 0 %>
+    <%= Pizza.find(cookies["pizza"+@cart_item_count.to_s]).name %>
+  <% end %>
+  </tbody>
+</table>

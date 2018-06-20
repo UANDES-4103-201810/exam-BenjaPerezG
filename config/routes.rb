@@ -4,9 +4,8 @@ Rails.application.routes.draw do
 
   get "order/new"
   post "order/create"
-
-  post "cart/new_item", to: "cart#new_item"
-  get "cart", to: "cart#index"
+  post "order/new_cart_item"
+  get "order/cart"
 
   get "home/index"
   root "home#index"
