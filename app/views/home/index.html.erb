@@ -1,0 +1,61 @@
+<table class="table">
+  <thead>
+    <th></th>
+    <th></th>
+    <th></th>
+  </thead>
+  <tbody>
+  <tr>
+  <% i = 0 %>
+    <% @pizzas.each do |pizza| %>
+      <% if i == 3 %>>
+        <tr>
+        <% i = 0 %>
+      <% end %>
+      <td>
+        <%= pizza.name %><br>
+        <img src="/assets/pizza.jpeg"  /><br>
+        Ingredients: <br>
+        <% @ingredients = "" %>
+        <% RecipeIngredient.where("recipe_id = ?", "#{Recipe.find(pizza.recipe_id).id}").each do |recipe| %>
+          <% @ingredients = @ingredients + Ingredient.find(recipe.ingredient_id).name + " " %>
+        <% end %>
+        <%= @ingredients %>
+        <%= link_to("Add to cart", cart_new_item_path, pizza: pizza.id) %></td>
+      <% if i == 2  %>
+        </tr>
+      <% end %>
+    <% i += 1%>
+    <% end %>
+    <% if i != 2 %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<!--<div class="container">
+  <% i = 0 %>
+  <% @pizzas.each do |pizza| %>
+    <% if i == 3 %>>
+      <div class="col">
+        <% i = 0 %>
+    <% end %>
+    <div class="row">
+      <%= pizza.id %>
+      <% @ingredients = "Ingredients: " %>
+      <% RecipeIngredient.where("recipe_id = ?", "#{Recipe.find(pizza.recipe_id).id}").each do |recipe| %>
+      <% @ingredients = @ingredients + Ingredient.find(recipe.ingredient_id).name + " " %>
+      <% end %>
+      <%= @ingredients %>
+      <%= link_to("Order") %>
+    </div>
+    <% if i == 2  %>
+      </div>
+    <% end %>
+    <% i += 1%>
+  <% end %>
+
+  <% if i != 2 %>
+    </div>
+  <% end %>
+</div>-->
